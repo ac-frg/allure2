@@ -10,9 +10,7 @@
     "status": {
       "name": "Tillstånd",
       "successRate": "Andel lyckade tester {{rate}}",
-      "slice": "{{count}} tester ({{percent}}% av alla tester)",
-      "slice_one": "{{count}} test ({{percent}}% av alla tester)",
-      "slice_other": "{{count}} tester ({{percent}}% av alla tester)"
+      "slice": "{{count}} {{status}} ({{percent}}% av alla tester)"
     },
     "trend": {
       "empty": "Det finns ingenting att visa här",

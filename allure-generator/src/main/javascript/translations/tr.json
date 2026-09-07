@@ -10,9 +10,7 @@
     "status": {
       "name": "Durum",
       "successRate": "Başarı oranı {{rate}}",
-      "slice": "{{count}} test (tüm testlerin %{{percent}} kadarı)",
-      "slice_one": "{{count}} test (tüm testlerin %{{percent}} kadarı)",
-      "slice_other": "{{count}} test (tüm testlerin %{{percent}} kadarı)"
+      "slice": "{{count}} {{status}} (tüm testlerin %{{percent}} kadarı)"
     },
     "trend": {
       "empty": "Gösterilecek bir şey yok",

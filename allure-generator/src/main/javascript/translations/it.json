@@ -10,9 +10,7 @@
     "status": {
       "name": "Stato",
       "successRate": "Tasso di successo {{rate}}",
-      "slice": "{{count}} test ({{percent}}% di tutti i test)",
-      "slice_one": "{{count}} test ({{percent}}% di tutti i test)",
-      "slice_other": "{{count}} test ({{percent}}% di tutti i test)"
+      "slice": "{{count}} {{status}} ({{percent}}% di tutti i test)"
     },
     "trend": {
       "empty": "Non c'è nulla da mostrare",

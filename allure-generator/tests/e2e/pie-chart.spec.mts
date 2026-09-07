@@ -18,31 +18,31 @@ const scenarios: {
     name: "issue 3489",
     counts: { passed: 493, failed: 45, skipped: 95 },
     rate: "91.63%",
-    slice: { status: "passed", text: "493 tests (77.88% of all tests)Passed" },
+    slice: { status: "passed", text: "493 Passed (77.88% of all tests)" },
   },
   {
     name: "broken and unknown results",
     counts: { passed: 3, failed: 1, broken: 2, skipped: 3, unknown: 1 },
     rate: "50%",
-    slice: { status: "broken", text: "2 tests (20% of all tests)Broken" },
+    slice: { status: "broken", text: "2 Broken (20% of all tests)" },
   },
   {
     name: "zero passed results",
     counts: { failed: 1, broken: 1, skipped: 1, unknown: 1 },
     rate: "0%",
-    slice: { status: "failed", text: "1 test (25% of all tests)Failed" },
+    slice: { status: "failed", text: "1 Failed (25% of all tests)" },
   },
   {
     name: "only skipped results",
     counts: { skipped: 3 },
     rate: "0%",
-    slice: { status: "skipped", text: "3 tests (100% of all tests)Skipped" },
+    slice: { status: "skipped", text: "3 Skipped (100% of all tests)" },
   },
   {
     name: "only unknown results",
     counts: { unknown: 2 },
     rate: "0%",
-    slice: { status: "unknown", text: "2 tests (100% of all tests)Unknown" },
+    slice: { status: "unknown", text: "2 Unknown (100% of all tests)" },
   },
   { name: "empty report", counts: {}, rate: "???" },
 ];
@@ -148,7 +148,7 @@ for (const chart of charts) {
   for (const scenario of scenarios) {
     test(`${chart.name}: shows ${scenario.name}`, async ({ page }) => {
       await description(
-        `Given ${scenario.name} counts, ${chart.name} shows only a success-rate label and value, with matching accessible text and all-tests slice percentages.`,
+        `Given ${scenario.name} counts, ${chart.name} shows only a success-rate label and value, with matching accessible text. Slice and legend tooltips show count, status, then the percentage of all tests.`,
       );
       await setResults(page, scenario.counts);
       await step(`Open ${chart.name}`, () =>
@@ -173,12 +173,20 @@ for (const chart of charts) {
         await step(`Hover ${status} slice`, () =>
           hoverSlice(page, container.locator(`.chart__arc_status_${status}`)),
         );
-        await checkText("Slice tooltip denominator", page.locator(".tooltip:visible"), text);
+        await checkText(
+          "Slice tooltip label order and percentage",
+          page.locator(".tooltip:visible"),
+          text,
+        );
         if (chart.route === "graph") {
           await step(`Hover ${status} legend`, () =>
             container.locator(`[data-status="${status}"]`).hover(),
           );
-          await checkText("Legend tooltip denominator", page.locator(".tooltip:visible"), text);
+          await checkText(
+            "Legend tooltip label order and percentage",
+            page.locator(".tooltip:visible"),
+            text,
+          );
         }
       }
     });
@@ -239,9 +247,9 @@ for (const chart of charts) {
   });
 }
 
-test("French tooltip uses translated label and singular count", async ({ page }) => {
+test("French tooltip places translated status between count and percentage", async ({ page }) => {
   await description(
-    "A French report exposes translated success-rate text and a singular slice label for one passed test.",
+    "A French report exposes translated success-rate text and places the translated status between the count and percentage for one passed test.",
   );
   await setResults(page, { passed: 1 });
   await page.addInitScript(() => {
@@ -262,8 +270,8 @@ test("French tooltip uses translated label and singular count", async ({ page })
     hoverSlice(page, page.locator(".summary-widget__chart .chart__arc_status_passed")),
   );
   await checkText(
-    "French singular slice",
+    "French slice label order and percentage",
     page.locator(".tooltip:visible"),
-    "1 test (100% de tous les tests)Passé",
+    "1 Passé (100% de tous les tests)",
   );
 });

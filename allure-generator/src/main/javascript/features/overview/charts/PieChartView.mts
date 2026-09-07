@@ -187,10 +187,8 @@ class PieChartView extends BaseChartView {
     const name = translate(`status.${status}`, {});
     return createFragment(
       translate("chart.status.slice", {
-        hash: { count: value, percent: this.formatNumber(part * 100) },
+        hash: { count: value, status: name, percent: this.formatNumber(part * 100) },
       }),
-      createElement("br"),
-      name,
     );
   }
   private showSuccessRateTooltip(anchor: Element) {

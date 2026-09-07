@@ -10,9 +10,7 @@
     "status": {
       "name": "სტატუსი",
       "successRate": "წარმატების მაჩვენებელი {{rate}}",
-      "slice": "{{count}} ტესტი (ყველა ტესტის {{percent}}%)",
-      "slice_one": "{{count}} ტესტი (ყველა ტესტის {{percent}}%)",
-      "slice_other": "{{count}} ტესტი (ყველა ტესტის {{percent}}%)"
+      "slice": "{{count}} {{status}} (ყველა ტესტის {{percent}}%)"
     },
     "trend": {
       "empty": "მონაცემები არაა ხელმისაწვდომი",

@@ -10,9 +10,7 @@
     "status": {
       "name": "Statut",
       "successRate": "Taux de réussite {{rate}}",
-      "slice": "{{count}} tests ({{percent}}% de tous les tests)",
-      "slice_one": "{{count}} test ({{percent}}% de tous les tests)",
-      "slice_other": "{{count}} tests ({{percent}}% de tous les tests)"
+      "slice": "{{count}} {{status}} ({{percent}}% de tous les tests)"
     },
     "trend": {
       "empty": "Il n'y a rien à montrer",

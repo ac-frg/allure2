@@ -10,11 +10,7 @@
     "status": {
       "name": "Statusy testov",
       "successRate": "Uspěšnosť {{rate}}",
-      "slice": "{{count}} testov ({{percent}}% vsih testov)",
-      "slice_one": "{{count}} test ({{percent}}% vsih testov)",
-      "slice_other": "{{count}} testov ({{percent}}% vsih testov)",
-      "slice_few": "{{count}} testy ({{percent}}% vsih testov)",
-      "slice_many": "{{count}} testov ({{percent}}% vsih testov)"
+      "slice": "{{count}} {{status}} ({{percent}}% vsih testov)"
     },
     "trend": {
       "empty": "Nema informacije",

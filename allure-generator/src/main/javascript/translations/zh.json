@@ -10,9 +10,7 @@
     "status": {
       "name": "状态",
       "successRate": "成功率 {{rate}}",
-      "slice": "{{count}} 个测试（占所有测试的 {{percent}}%）",
-      "slice_one": "{{count}} 个测试（占所有测试的 {{percent}}%）",
-      "slice_other": "{{count}} 个测试（占所有测试的 {{percent}}%）"
+      "slice": "{{count}} {{status}}（占所有测试的 {{percent}}%）"
     },
     "trend": {
       "empty": "没有信息",

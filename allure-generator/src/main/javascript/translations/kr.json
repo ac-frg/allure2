@@ -10,9 +10,7 @@
     "status": {
       "name": "상태",
       "successRate": "성공률 {{rate}}",
-      "slice": "{{count}}개 테스트 (전체 테스트의 {{percent}}%)",
-      "slice_one": "{{count}}개 테스트 (전체 테스트의 {{percent}}%)",
-      "slice_other": "{{count}}개 테스트 (전체 테스트의 {{percent}}%)"
+      "slice": "{{count}} {{status}} (전체 테스트의 {{percent}}%)"
     },
     "trend": {
       "empty": "정보가 없습니다.",
