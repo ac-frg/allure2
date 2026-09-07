@@ -42,6 +42,18 @@ class PieChartView extends BaseChartView {
 
   declare data: PieChartDatum[];
 
+  private successRateTooltip: TooltipView;
+
+  private captionHovered = false;
+
+  private captionFocused = false;
+
+  private onTooltipKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      this.hideSuccessRateTooltip();
+    }
+  };
+
   constructor(options: PieChartOptions = {}) {
     super(options);
     this.statistic = options.statistic || {};
@@ -52,6 +64,15 @@ class PieChartView extends BaseChartView {
       .value((d: PieChartDatum) => d.value);
     this.tooltip = new TooltipView({
       position: "center",
+    });
+    this.successRateTooltip = new TooltipView({ position: "top", offset: 0 });
+    this.successRateTooltip.className = "tooltip chart__success-rate-tooltip";
+    this.successRateTooltip.positionClassBase = "tooltip";
+    this.successRateTooltip.el.setAttribute("role", "tooltip");
+    this.successRateTooltip.el.addEventListener("mouseleave", () => {
+      if (!this.captionHovered && !this.captionFocused) {
+        this.hideSuccessRateTooltip();
+      }
     });
     this.getChartData();
   }
@@ -75,6 +96,11 @@ class PieChartView extends BaseChartView {
     return this.svg;
   }
   drawChart() {
+    this.hideSuccessRateTooltip();
+
+    this.captionHovered = false;
+    this.captionFocused = false;
+
     const data = this.data;
     const arcGenerator = this.arc as unknown as (
       datum: import("d3-shape").PieArcDatum<PieChartDatum>,
@@ -97,11 +123,18 @@ class PieChartView extends BaseChartView {
       .append("path")
       .attr("class", (d) => `chart__arc chart__arc_status_${d.data.name.toLowerCase()}`);
     this.bindTooltip(sectors);
+
     this.svg
       .select(".chart__plot")
       .append("text")
       .classed("chart__caption", true)
       .attr("dy", "0.4em")
+      .attr("tabindex", 0)
+      .attr("role", "img")
+      .attr(
+        "aria-label",
+        translate("chart.status.successRate", { hash: { rate: this.getChartTitle() } }),
+      )
       .text(this.getChartTitle());
     if (this.firstRender) {
       (
@@ -153,10 +186,58 @@ class PieChartView extends BaseChartView {
     const status = data.name.toLowerCase();
     const name = translate(`status.${status}`, {});
     return createFragment(
-      `${value} tests (${this.formatNumber(part * 100)}%)`,
+      translate("chart.status.slice", {
+        hash: { count: value, percent: this.formatNumber(part * 100) },
+      }),
       createElement("br"),
       name,
     );
+  }
+  private showSuccessRateTooltip(anchor: Element) {
+    this.hideTooltip();
+    this.successRateTooltip.show(
+      createFragment(
+        translate("chart.status.successRate", { hash: { rate: this.getChartTitle() } }),
+      ),
+      anchor,
+    );
+    document.addEventListener("keydown", this.onTooltipKeyDown);
+  }
+  private hideSuccessRateTooltip() {
+    this.successRateTooltip.hide();
+    document.removeEventListener("keydown", this.onTooltipKeyDown);
+  }
+  onCaptionHover(event: MouseEvent) {
+    this.captionHovered = true;
+    this.showSuccessRateTooltip(event.currentTarget as Element);
+  }
+  onCaptionOut(event: MouseEvent) {
+    this.captionHovered = false;
+
+    if (
+      !this.captionFocused &&
+      !(
+        event.relatedTarget instanceof Node &&
+        this.successRateTooltip.el.contains(event.relatedTarget)
+      )
+    ) {
+      this.hideSuccessRateTooltip();
+    }
+  }
+  onCaptionFocus(event: FocusEvent) {
+    this.captionFocused = true;
+    this.showSuccessRateTooltip(event.currentTarget as Element);
+  }
+  onCaptionBlur() {
+    this.captionFocused = false;
+
+    if (!this.captionHovered && !this.successRateTooltip.el.matches(":hover")) {
+      this.hideSuccessRateTooltip();
+    }
+  }
+  detachFromDom() {
+    this.hideSuccessRateTooltip();
+    super.detachFromDom();
   }
   getLegendElement() {
     return createElement("div", {
@@ -190,6 +271,10 @@ class PieChartView extends BaseChartView {
   }
   getDelegatedEvents() {
     return {
+      "mouseenter .chart__caption": "onCaptionHover",
+      "mouseleave .chart__caption": "onCaptionOut",
+      "focusin .chart__caption": "onCaptionFocus",
+      "focusout .chart__caption": "onCaptionBlur",
       "mouseleave .chart__legend-row": "onLegendOut",
       "mouseenter .chart__legend-row": "onLegendHover",
     };

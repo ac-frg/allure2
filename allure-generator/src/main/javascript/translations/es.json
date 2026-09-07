@@ -8,7 +8,11 @@
       "name": "Severidad"
     },
     "status": {
-      "name": "Estado"
+      "name": "Estado",
+      "successRate": "Tasa de éxito {{rate}}",
+      "slice": "{{count}} pruebas ({{percent}}% de todas las pruebas)",
+      "slice_one": "{{count}} prueba ({{percent}}% de todas las pruebas)",
+      "slice_other": "{{count}} pruebas ({{percent}}% de todas las pruebas)"
     },
     "trend": {
       "empty": "No hay nada para mostrar",

@@ -23,6 +23,14 @@
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-xxl);
     text-anchor: middle;
+    &:focus-visible {
+      outline: 2px solid var(--color-text-primary);
+      outline-offset: gap(0.5);
+    }
+  }
+  &__success-rate-tooltip.tooltip {
+    max-width: min(320px, calc(100vw - 16px));
+    pointer-events: auto;
   }
   &__body > div {
     padding-top: 50%;

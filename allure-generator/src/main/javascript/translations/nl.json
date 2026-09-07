@@ -8,7 +8,11 @@
       "name": "Ernst"
     },
     "status": {
-      "name": "Toestand"
+      "name": "Toestand",
+      "successRate": "Slagingspercentage {{rate}}",
+      "slice": "{{count}} tests ({{percent}}% van alle tests)",
+      "slice_one": "{{count}} test ({{percent}}% van alle tests)",
+      "slice_other": "{{count}} tests ({{percent}}% van alle tests)"
     },
     "trend": {
       "empty": "Er is niets te tonen",

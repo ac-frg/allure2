@@ -8,7 +8,13 @@
       "name": "Važnost testov"
     },
     "status": {
-      "name": "Statusy testov"
+      "name": "Statusy testov",
+      "successRate": "Uspěšnosť {{rate}}",
+      "slice": "{{count}} testov ({{percent}}% vsih testov)",
+      "slice_one": "{{count}} test ({{percent}}% vsih testov)",
+      "slice_other": "{{count}} testov ({{percent}}% vsih testov)",
+      "slice_few": "{{count}} testy ({{percent}}% vsih testov)",
+      "slice_many": "{{count}} testov ({{percent}}% vsih testov)"
     },
     "trend": {
       "empty": "Nema informacije",

@@ -8,7 +8,13 @@
       "name": "Важность тестов"
     },
     "status": {
-      "name": "Статусы тестов"
+      "name": "Статусы тестов",
+      "successRate": "Успешность {{rate}}",
+      "slice": "{{count}} теста ({{percent}}% всех тестов)",
+      "slice_one": "{{count}} тест ({{percent}}% всех тестов)",
+      "slice_other": "{{count}} теста ({{percent}}% всех тестов)",
+      "slice_few": "{{count}} теста ({{percent}}% всех тестов)",
+      "slice_many": "{{count}} тестов ({{percent}}% всех тестов)"
     },
     "trend": {
       "empty": "Нет данных",

@@ -8,7 +8,11 @@
       "name": "Կարևորությունը"
     },
     "status": {
-      "name": "Կարգավիճակ"
+      "name": "Կարգավիճակ",
+      "successRate": "Հաջողության տոկոսը {{rate}}",
+      "slice": "{{count}} թեստ (բոլոր թեստերի {{percent}}%-ը)",
+      "slice_one": "{{count}} թեստ (բոլոր թեստերի {{percent}}%-ը)",
+      "slice_other": "{{count}} թեստ (բոլոր թեստերի {{percent}}%-ը)"
     },
     "trend": {
       "empty": "Տվյալներ չկան",

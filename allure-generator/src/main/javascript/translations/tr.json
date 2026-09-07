@@ -8,7 +8,11 @@
       "name": "Önem Derecesi"
     },
     "status": {
-      "name": "Durum"
+      "name": "Durum",
+      "successRate": "Başarı oranı {{rate}}",
+      "slice": "{{count}} test (tüm testlerin %{{percent}} kadarı)",
+      "slice_one": "{{count}} test (tüm testlerin %{{percent}} kadarı)",
+      "slice_other": "{{count}} test (tüm testlerin %{{percent}} kadarı)"
     },
     "trend": {
       "empty": "Gösterilecek bir şey yok",

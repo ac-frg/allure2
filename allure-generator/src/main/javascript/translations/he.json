@@ -8,7 +8,11 @@
       "name": "חומרה"
     },
     "status": {
-      "name": "סטטוס"
+      "name": "סטטוס",
+      "successRate": "שיעור הצלחה {{rate}}",
+      "slice": "{{count}} בדיקות ({{percent}}% מכל הבדיקות)",
+      "slice_one": "{{count}} בדיקה ({{percent}}% מכל הבדיקות)",
+      "slice_other": "{{count}} בדיקות ({{percent}}% מכל הבדיקות)"
     },
     "trend": {
       "empty": "אין דבר להציג",

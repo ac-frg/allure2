@@ -8,7 +8,13 @@
       "name": "Ważność"
     },
     "status": {
-      "name": "Stan"
+      "name": "Stan",
+      "successRate": "Wskaźnik powodzenia {{rate}}",
+      "slice": "{{count}} testu ({{percent}}% wszystkich testów)",
+      "slice_one": "{{count}} test ({{percent}}% wszystkich testów)",
+      "slice_other": "{{count}} testu ({{percent}}% wszystkich testów)",
+      "slice_few": "{{count}} testy ({{percent}}% wszystkich testów)",
+      "slice_many": "{{count}} testów ({{percent}}% wszystkich testów)"
     },
     "trend": {
       "empty": "Brak czegokolwiek do pokazania",

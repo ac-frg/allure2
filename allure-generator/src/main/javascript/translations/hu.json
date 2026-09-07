@@ -8,7 +8,11 @@
       "name": "Súlyosság"
     },
     "status": {
-      "name": "Státusz"
+      "name": "Státusz",
+      "successRate": "Sikerességi arány {{rate}}",
+      "slice": "{{count}} teszt (az összes teszt {{percent}}%-a)",
+      "slice_one": "{{count}} teszt (az összes teszt {{percent}}%-a)",
+      "slice_other": "{{count}} teszt (az összes teszt {{percent}}%-a)"
     },
     "trend": {
       "empty": "Üres",

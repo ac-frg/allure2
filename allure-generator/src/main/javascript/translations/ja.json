@@ -8,7 +8,11 @@
       "name": "重大度"
     },
     "status": {
-      "name": "ステータス"
+      "name": "ステータス",
+      "successRate": "成功率 {{rate}}",
+      "slice": "{{count}} 件のテスト（全テストの {{percent}}%）",
+      "slice_one": "{{count}} 件のテスト（全テストの {{percent}}%）",
+      "slice_other": "{{count}} 件のテスト（全テストの {{percent}}%）"
     },
     "trend": {
       "empty": "何も表示するものがありません",

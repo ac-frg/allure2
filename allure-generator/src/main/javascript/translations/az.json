@@ -8,7 +8,11 @@
       "name": "Testlərin əhəmiyyəti"
     },
     "status": {
-      "name": "Testlərin statusu"
+      "name": "Testlərin statusu",
+      "successRate": "Uğur faizi {{rate}}",
+      "slice": "{{count}} test (bütün testlərin {{percent}}%-i)",
+      "slice_one": "{{count}} test (bütün testlərin {{percent}}%-i)",
+      "slice_other": "{{count}} test (bütün testlərin {{percent}}%-i)"
     },
     "trend": {
       "empty": "Göstəriləcək heç nə yoxdur",
